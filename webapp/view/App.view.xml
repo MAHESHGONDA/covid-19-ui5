@@ -15,16 +15,6 @@
 				<content>
 					<Panel backgroundDesign="Solid">
 						<f:GridList class="sapUiSmallMarginTop">
-							<!--<f:GridListItem class="comboboxBackgroundCss">-->
-							<!--	<VBox>-->
-							<!--		<VBox class="sapUiSmallMargin">-->
-							<!--			<Title class="redcolorCountLabel fontCountLabelSizeCss" text="{i18n>selectCountry}" wrapping="true"/>-->
-							<!--			<ComboBox id="overviewId" selectionChange="onCountrySelect" items="{/data}">-->
-							<!--				<core:ListItem key="{country}" text="{country}"/>-->
-							<!--			</ComboBox>-->
-							<!--		</VBox>-->
-							<!--	</VBox>-->
-							<!--</f:GridListItem>-->
 							<f:GridListItem class="redbackgroundCss">
 								<VBox>
 									<VBox class="sapUiSmallMargin">
