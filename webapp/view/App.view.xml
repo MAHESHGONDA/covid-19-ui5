@@ -1,0 +1,184 @@
+<mvc:View controllerName="com.sapyard.covid19.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="appId">
+		<pages>
+			<Page id="page" enableScrolling="true">
+				<headerContent>
+					<OverflowToolbar >
+						<ToolbarSpacer/>
+						<Title text="{i18n>selectCountry}" wrapping="true"/>
+						<ComboBox id="overviewId" selectionChange="onCountrySelect" items="{/data}">
+							<core:ListItem key="{country}" text="{country}"/>
+						</ComboBox>
+					</OverflowToolbar>
+				</headerContent>
+				<content>
+					<Panel backgroundDesign="Solid">
+						<f:GridList class="sapUiSmallMarginTop">
+							<!--<f:GridListItem class="comboboxBackgroundCss">-->
+							<!--	<VBox>-->
+							<!--		<VBox class="sapUiSmallMargin">-->
+							<!--			<Title class="redcolorCountLabel fontCountLabelSizeCss" text="{i18n>selectCountry}" wrapping="true"/>-->
+							<!--			<ComboBox id="overviewId" selectionChange="onCountrySelect" items="{/data}">-->
+							<!--				<core:ListItem key="{country}" text="{country}"/>-->
+							<!--			</ComboBox>-->
+							<!--		</VBox>-->
+							<!--	</VBox>-->
+							<!--</f:GridListItem>-->
+							<f:GridListItem class="redbackgroundCss">
+								<VBox>
+									<VBox class="sapUiSmallMargin">
+										<Title class="redcolorCountLabel fontCountLabelSizeCss" text="{i18n>confirmed}" wrapping="true"/>
+										<Label class="redcolorCountLabel fontCountSizeCss" text="{/selectedData/cases}" wrapping="true"/>
+									</VBox>
+								</VBox>
+							</f:GridListItem>
+							<f:GridListItem class="greenbackgroundCss">
+								<VBox>
+									<VBox class="sapUiSmallMargin">
+										<Title class="greencolorCountLabel fontCountLabelSizeCss" text="{i18n>recovered}" wrapping="true"/>
+										<Label class="greencolorCountLabel fontCountSizeCss" text="{/selectedData/recovered}" wrapping="true"/>
+									</VBox>
+								</VBox>
+							</f:GridListItem>
+							<f:GridListItem class="graybackgroundCss">
+								<VBox>
+									<VBox class="sapUiSmallMargin">
+										<Title class="graycolorCountLabel fontCountLabelSizeCss" text="{i18n>deaths}" wrapping="true"/>
+										<Label class="graycolorCountLabel fontCountSizeCss" text="{/selectedData/deaths}" wrapping="true"/>
+									</VBox>
+								</VBox>
+							</f:GridListItem>
+						</f:GridList>
+					</Panel>
+					<!--botttom-->
+					<Panel visible="{/bottomPanelVisible}" class="panelBottomBorder" backgroundDesign="Solid">
+						<l:DynamicSideContent id="DynamicSideContent" breakpointChanged="updateToggleButtonState">
+							<Panel class="panelBottomBorder">
+								<Title text="{/selectedCountry} : {i18n>overview}" level="H1" class="sapUiSmallMarginBottom"/>
+								<f:GridList >
+									<f:GridListItem class="bluebackgroundCss">
+										<VBox>
+											<VBox class="sapUiSmallMargin">
+												<Title class="fontCountLabelSizeCss" text="{i18n>todayCases}" wrapping="true"/>
+												<Label class="fontCountSizeCss" text="{/selectedData/todayCases}" wrapping="true"/>
+											</VBox>
+										</VBox>
+									</f:GridListItem>
+									<f:GridListItem class="bluebackgroundCss">
+										<VBox>
+											<VBox class="sapUiSmallMargin">
+												<Title class=" fontCountLabelSizeCss" text="{i18n>todayDeaths}" wrapping="true"/>
+												<Label class=" fontCountSizeCss" text="{/selectedData/todayDeaths}" wrapping="true"/>
+											</VBox>
+										</VBox>
+									</f:GridListItem>
+									<f:GridListItem class="bluebackgroundCss">
+										<VBox>
+											<VBox class="sapUiSmallMargin">
+												<Title class=" fontCountLabelSizeCss" text="{i18n>active}" wrapping="true"/>
+												<Label class=" fontCountSizeCss" text="{/selectedData/active}" wrapping="true"/>
+											</VBox>
+										</VBox>
+									</f:GridListItem>
+									<f:GridListItem class="bluebackgroundCss">
+										<VBox>
+											<VBox class="sapUiSmallMargin">
+												<Title class=" fontCountLabelSizeCss" text="{i18n>critical}" wrapping="true"/>
+												<Label class=" fontCountSizeCss" text="{/selectedData/critical}" wrapping="true"/>
+											</VBox>
+										</VBox>
+									</f:GridListItem>
+									<f:GridListItem class="bluebackgroundCss">
+										<VBox>
+											<VBox class="sapUiSmallMargin">
+												<Title class=" fontCountLabelSizeCss" text="{i18n>casesPerOneMillion}" wrapping="true"/>
+												<Label class=" fontCountSizeCss" text="{/selectedData/casesPerOneMillion}" wrapping="true"/>
+											</VBox>
+										</VBox>
+									</f:GridListItem>
+									<f:GridListItem class="bluebackgroundCss">
+										<VBox>
+											<VBox class="sapUiSmallMargin">
+												<Title class="fontCountLabelSizeCss" text="{i18n>deathsPerOneMillion}" wrapping="true"/>
+												<Label class=" fontCountSizeCss" text="{/selectedData/deathsPerOneMillion}" wrapping="true"/>
+											</VBox>
+										</VBox>
+									</f:GridListItem>
+								</f:GridList>
+							</Panel>
+							<l:sideContent>
+								<!--<ScrollContainer horizontal="false" vertical="true" height="50%">-->
+								<Table items="{/topTenData}" sticky="ColumnHeaders,HeaderToolbar" backgroundDesign="Solid">
+									<headerToolbar>
+										<OverflowToolbar>
+											<Title text="{i18n>topTenCountries}" level="H4"/>
+											<ToolbarSpacer/>
+										</OverflowToolbar>
+									</headerToolbar>
+									<columns>
+										<Column>
+											<Text text="{i18n>country}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>cases}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>deaths}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem vAlign="Middle" type="Inactive">
+											<cells>
+												<Text text="{country}" wrapping="false"/>
+												<Text text="{cases}" wrapping="false"/>
+												<Text text="{deaths}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<!--</ScrollContainer>-->
+							</l:sideContent>
+						</l:DynamicSideContent>
+					</Panel>
+					<!--<Panel backgroundDesign="Solid">-->
+					<!--	<f:GridList class="sapUiSmallMarginTop">-->
+					<!--		<f:GridListItem class="">-->
+					<!--			<VBox>-->
+					<!--				<VBox class="sapUiSmallMargin"></VBox>-->
+					<!--			</VBox>-->
+					<!--		</f:GridListItem>-->
+					<!--		<f:GridListItem class="">-->
+					<!--			<VBox>-->
+					<!--				<VBox class="sapUiSmallMargin">-->
+					<!--				</VBox>-->
+					<!--			</VBox>-->
+					<!--		</f:GridListItem>-->
+					<!--	</f:GridList>-->
+					<!--</Panel>-->
+					<!--<VBox width="100%" height="100%">-->
+					<!--<Panel class="panelBottomBorder">-->
+					<!--<l:ResponsiveSplitter defaultPane="default">-->
+					<!--	<l:PaneContainer>-->
+					<!--		<l:SplitPane requiredParentWidth="600" id="default">-->
+					<!--			<Panel headerText="Minimum parent width 400" class="panelBottomBorder"></Panel>-->
+					<!--		</l:SplitPane>-->
+					<!--		<l:PaneContainer orientation="Vertical">-->
+					<!--			<l:SplitPane requiredParentWidth="400"></l:SplitPane>-->
+					<!--		</l:PaneContainer>-->
+					<!--	</l:PaneContainer>-->
+					<!--</l:ResponsiveSplitter>-->
+					<!--</Panel>-->
+				</content>
+				<footer>
+					<OverflowToolbar >
+						<ToolbarSpacer/>
+						<html:div class="sapyardLogo sapUiTinyMarginEnd">
+							<Image src="images/402776.png"/>
+						</html:div>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

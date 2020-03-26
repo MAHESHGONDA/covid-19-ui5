@@ -1,0 +1,124 @@
+/* Enter your custom styles here */
+
+
+/* Enter your custom styles here */
+
+.gridContainerHeader {
+    border-bottom: 1px solid #cbd5e0;
+    padding: 10px !important;
+    /*margin: 10px;*/
+    text-align: center;
+    background-color: white;
+}
+
+.sapyardLogo {
+    /*position: absolute;*/
+    /*z-index: 10;*/
+    /*bottom: 0;*/
+    /*right: 10px;*/
+    
+}
+
+.sapyardLogo > * {
+    width: 150px;
+}
+
+
+/*.textLeft {*/
+
+
+/*    text-align: left;*/
+
+
+/*}*/
+
+.redcolorCountLabel {
+    color: red;
+}
+
+.greencolorCountLabel {
+    color: #38a169;
+}
+
+.graycolorCountLabel {
+    color: gray;
+}
+
+.fontCountLabelSizeCss {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.fontCountSizeCss {
+    font-size: 1.87rem;
+    font-weight: 700;
+}
+
+.greenbackgroundCss {
+    color: #38a16947;
+    /*padding: 10px;*/
+    /* background: red; */
+    background-color: #00800030;
+    border: 0 solid #e2e8f0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+}
+
+.graybackgroundCss {
+    color: #718096;
+    /*padding: 10px;*/
+    /* background: red; */
+    background-color: #80808052;
+    border: 0 solid #e2e8f0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+}
+
+.redbackgroundCss {
+    color: #e53e3e;
+    /*padding: 10px;*/
+    /* background: red; */
+    background-color: #fed7d7;
+    border: 0 solid #e2e8f0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+}
+
+.bluebackgroundCss {
+    background-color: #0c24af00;
+    border: 1px solid #fafafa !important;
+    padding: 10px !important;
+    border-radius: 50px 20px !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+}
+
+.comboboxBackgroundCss {
+    color: #38a16947;
+    /*padding: 10px;*/
+    /* background: red; */
+    background-color: #00800030;
+    border: 0 solid #e2e8f0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+}
+
+
+/*.color_red_bottom {*/
+
+
+/*	background-color: #fed7d7;*/
+
+
+/*    border: 0 solid #e2e8f0;*/
+
+
+/*    font-weight: 600;*/
+
+
+/*    padding-top: .25rem;*/
+
+
+/*    padding-bottom: .25rem;*/
+
+
+/*}*/
+
+.panelBottomBorder > * {
+    border-bottom: 0px solid #ccc0 !important;
+}
