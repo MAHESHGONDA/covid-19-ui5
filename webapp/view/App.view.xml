@@ -1,5 +1,6 @@
 <mvc:View controllerName="com.sapyard.covid19.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
-	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:control="com.sapyard.covid19.control"
+	xmlns:html="http://www.w3.org/1999/xhtml">
 	<App id="appId">
 		<pages>
 			<Page id="page" enableScrolling="true">
@@ -10,6 +11,10 @@
 						<ComboBox id="overviewId" selectionChange="onCountrySelect" items="{/data}">
 							<core:ListItem key="{country}" text="{country}"/>
 						</ComboBox>
+						<!--<Select width="300px" id="overviewId" change="onCountrySelect" items="{/data}">-->
+						<!--items="{ path: '/data', sorter: { path: 'country',descending:true } }">-->
+						<!--	<core:Item key="{country}" text="{country}"/>-->
+						<!--</Select>-->
 					</OverflowToolbar>
 				</headerContent>
 				<content>
@@ -34,8 +39,8 @@
 							<f:GridListItem class="graybackgroundCss">
 								<VBox>
 									<VBox class="sapUiSmallMargin">
-										<Title class="graycolorCountLabel fontCountLabelSizeCss" text="{i18n>deaths}" wrapping="true"/>
-										<Label class="graycolorCountLabel fontCountSizeCss" text="{/selectedData/deaths}" wrapping="true"/>
+										<Title class="morronColor fontCountLabelSizeCss" text="{i18n>deaths}" wrapping="true"/>
+										<Label class="morronColor fontCountSizeCss" text="{/selectedData/deaths}" wrapping="true"/>
 									</VBox>
 								</VBox>
 							</f:GridListItem>
@@ -45,53 +50,53 @@
 					<Panel visible="{/bottomPanelVisible}" class="panelBottomBorder" backgroundDesign="Solid">
 						<l:DynamicSideContent id="DynamicSideContent" breakpointChanged="updateToggleButtonState">
 							<Panel class="panelBottomBorder">
-								<Title text="{/selectedCountry} : {i18n>overview}" level="H1" class="sapUiSmallMarginBottom"/>
+								<Title text="{/selectedCountry} : {i18n>overview}" level="H4" class="sapUiSmallMarginBottom fontCountLabelSizeCss"/>
 								<f:GridList >
 									<f:GridListItem class="bluebackgroundCss">
 										<VBox>
 											<VBox class="sapUiSmallMargin">
-												<Title class="fontCountLabelSizeCss" text="{i18n>todayCases}" wrapping="true"/>
-												<Label class="fontCountSizeCss" text="{/selectedData/todayCases}" wrapping="true"/>
+												<Title class="redcolorCountLabel fontCountLabelSize500Css" text="{i18n>todayCases}" wrapping="true"/>
+												<Label class="redcolorCountLabel fontCountSizeCss" text="{/selectedData/todayCases}" wrapping="true"/>
 											</VBox>
 										</VBox>
 									</f:GridListItem>
 									<f:GridListItem class="bluebackgroundCss">
 										<VBox>
 											<VBox class="sapUiSmallMargin">
-												<Title class=" fontCountLabelSizeCss" text="{i18n>todayDeaths}" wrapping="true"/>
-												<Label class=" fontCountSizeCss" text="{/selectedData/todayDeaths}" wrapping="true"/>
+												<Title class="morronColor fontCountLabelSize500Css" text="{i18n>todayDeaths}" wrapping="true"/>
+												<Label class="morronColor fontCountSizeCss" text="{/selectedData/todayDeaths}" wrapping="true"/>
 											</VBox>
 										</VBox>
 									</f:GridListItem>
 									<f:GridListItem class="bluebackgroundCss">
 										<VBox>
 											<VBox class="sapUiSmallMargin">
-												<Title class=" fontCountLabelSizeCss" text="{i18n>active}" wrapping="true"/>
-												<Label class=" fontCountSizeCss" text="{/selectedData/active}" wrapping="true"/>
+												<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>active}" wrapping="true"/>
+												<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/active}" wrapping="true"/>
 											</VBox>
 										</VBox>
 									</f:GridListItem>
 									<f:GridListItem class="bluebackgroundCss">
 										<VBox>
 											<VBox class="sapUiSmallMargin">
-												<Title class=" fontCountLabelSizeCss" text="{i18n>critical}" wrapping="true"/>
-												<Label class=" fontCountSizeCss" text="{/selectedData/critical}" wrapping="true"/>
+												<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>critical}" wrapping="true"/>
+												<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/critical}" wrapping="true"/>
 											</VBox>
 										</VBox>
 									</f:GridListItem>
 									<f:GridListItem class="bluebackgroundCss">
 										<VBox>
 											<VBox class="sapUiSmallMargin">
-												<Title class=" fontCountLabelSizeCss" text="{i18n>casesPerOneMillion}" wrapping="true"/>
-												<Label class=" fontCountSizeCss" text="{/selectedData/casesPerOneMillion}" wrapping="true"/>
+												<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>casesPerOneMillion}" wrapping="true"/>
+												<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/casesPerOneMillion}" wrapping="true"/>
 											</VBox>
 										</VBox>
 									</f:GridListItem>
 									<f:GridListItem class="bluebackgroundCss">
 										<VBox>
 											<VBox class="sapUiSmallMargin">
-												<Title class="fontCountLabelSizeCss" text="{i18n>deathsPerOneMillion}" wrapping="true"/>
-												<Label class=" fontCountSizeCss" text="{/selectedData/deathsPerOneMillion}" wrapping="true"/>
+												<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>deathsPerOneMillion}" wrapping="true"/>
+												<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/deathsPerOneMillion}" wrapping="true"/>
 											</VBox>
 										</VBox>
 									</f:GridListItem>
@@ -99,22 +104,23 @@
 							</Panel>
 							<l:sideContent>
 								<!--<ScrollContainer horizontal="false" vertical="true" height="50%">-->
-								<Table items="{/topTenData}" sticky="ColumnHeaders,HeaderToolbar" backgroundDesign="Solid">
-									<headerToolbar>
-										<OverflowToolbar>
-											<Title text="{i18n>topTenCountries}" level="H4"/>
+								<Table items="{path:'/topTenData', sorter: { path: 'cases',descending: true }}" sticky="ColumnHeaders,HeaderToolbar"
+									backgroundDesign="Solid">
+									<headerToolbar >
+										<OverflowToolbar class="blueHeader">
+											<Title class="blackColor" text="{i18n>topTenCountries}" level="H4"/>
 											<ToolbarSpacer/>
 										</OverflowToolbar>
 									</headerToolbar>
 									<columns>
-										<Column>
+										<Column >
 											<Text text="{i18n>country}"/>
 										</Column>
 										<Column>
 											<Text text="{i18n>cases}"/>
 										</Column>
 										<Column>
-											<Text text="{i18n>deaths}"/>
+											<Text class="morronColor" text="{i18n>deaths}"/>
 										</Column>
 									</columns>
 									<items>
@@ -122,7 +128,7 @@
 											<cells>
 												<Text text="{country}" wrapping="false"/>
 												<Text text="{cases}" wrapping="false"/>
-												<Text text="{deaths}"/>
+												<Text class="morronColor" text="{deaths}"/>
 											</cells>
 										</ColumnListItem>
 									</items>
@@ -131,6 +137,7 @@
 							</l:sideContent>
 						</l:DynamicSideContent>
 					</Panel>
+					<!--<control:Country countryList="{/topTenData}"/>-->
 				</content>
 				<footer>
 					<OverflowToolbar >
