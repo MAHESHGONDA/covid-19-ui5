@@ -1,13 +1,15 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
-], function (Controller, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"com/sapyard/covid19/libs/d3v4"
+], function (Controller, JSONModel, d3v4) {
 	"use strict";
 
 	return Controller.extend("com.sapyard.covid19.controller.App", {
 		onInit: function () {
 			this.statsInterval = null;
 			this.selectedItem = null;
+			this.data = null;
 			this.covidModel = new JSONModel({
 				data: [],
 				topTenData: [],
@@ -23,8 +25,7 @@ sap.ui.define([
 
 		},
 		getLiveData: function () {
-			debugger;
-			this.statsInterval = setInterval(this.getCovidAllCountryData.bind(this), 60000);
+			this.statsInterval = setInterval(this.getCovidAllCountryData.bind(this), 300000);
 			// setin(this.getCovidAllCountryData.bind(this), 60000);
 		},
 
@@ -42,9 +43,21 @@ sap.ui.define([
 			//  
 		},
 		onCovidDataSuccess: function (aCountry) {
-			debugger;
-			this.covidModel.setProperty("/data", aCountry);
+			// aCountry = aCountry.sort(function (a, b) {
+			// 	return a.country - b.country
+			// })
 			this.covidModel.setProperty("/topTenData", aCountry.slice(0, 5));
+			aCountry = aCountry.sort(function (a, b) {
+				var nameA = a.country.toLowerCase(),
+					nameB = b.country.toLowerCase()
+				if (nameA < nameB) //sort string ascending
+					return -1
+				if (nameA > nameB)
+					return 1
+				return 0 //default return value (no sorting)
+			})
+
+			this.data = aCountry;
 			this.getCovidOverview();
 
 		},
@@ -64,8 +77,11 @@ sap.ui.define([
 			this.global = data;
 			this.global.country = "Global";
 			this.global.text = this.global.country;
+			this.global.todayCases = "-";
 
-			this.covidModel.getProperty("/data").push(this.global);
+			this.data.unshift(this.global);
+			this.covidModel.setProperty("/data", this.data);
+			// this.covidModel.getProperty("/data").unshift(this.global);
 			this.covidModel.refresh(true);
 			this.setDefault();
 		},
@@ -73,7 +89,6 @@ sap.ui.define([
 
 		},
 		setDefault: function () {
-			debugger;
 			var oCombobox = this.getView().byId("overviewId");
 			// var selectedKey = oCombobox.getSelectedKey();
 			if (this.selectedItem) {
@@ -82,6 +97,7 @@ sap.ui.define([
 			} else {
 				this.handleBottomPanelVisiblility();
 				oCombobox.setSelectedKey("Global");
+				// oCombobox.setSelectedItem(oCombobox.getItems()[0]);
 			}
 
 			// var oEvent = new sap.ui.base.Event(oCombobox.getId(), oCombobox, this.global);

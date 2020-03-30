@@ -3,6 +3,14 @@
 
 /* Enter your custom styles here */
 
+.blueHeader {
+    background-color: #0000ff5e !important;
+}
+
+.blackColor {
+    color: black;
+}
+
 .gridContainerHeader {
     border-bottom: 1px solid #cbd5e0;
     padding: 10px !important;
@@ -16,21 +24,11 @@
     /*z-index: 10;*/
     /*bottom: 0;*/
     /*right: 10px;*/
-    
 }
 
 .sapyardLogo > * {
     width: 150px;
 }
-
-
-/*.textLeft {*/
-
-
-/*    text-align: left;*/
-
-
-/*}*/
 
 .redcolorCountLabel {
     color: red;
@@ -40,8 +38,21 @@
     color: #38a169;
 }
 
+.morronColor {
+    color: #800000 !important;
+}
+
 .graycolorCountLabel {
     color: gray;
+}
+
+.blackcolorCountLabel {
+    color: black;
+}
+
+.fontCountLabelSize500Css {
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .fontCountLabelSizeCss {
@@ -59,8 +70,8 @@
     /*padding: 10px;*/
     /* background: red; */
     background-color: #00800030;
-    border: 0 solid #e2e8f0;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    border-radius: 4%;
+    box-shadow: 0 7px 12px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
 }
 
 .graybackgroundCss {
@@ -68,8 +79,8 @@
     /*padding: 10px;*/
     /* background: red; */
     background-color: #80808052;
-    border: 0 solid #e2e8f0;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    border-radius: 4%;
+    box-shadow: 0 7px 12px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
 }
 
 .redbackgroundCss {
@@ -77,8 +88,8 @@
     /*padding: 10px;*/
     /* background: red; */
     background-color: #fed7d7;
-    border: 0 solid #e2e8f0;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    border-radius: 4%;
+    box-shadow: 0 7px 12px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
 }
 
 .bluebackgroundCss {
@@ -98,26 +109,16 @@
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
 }
 
+.iconSizeCss {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
 
-/*.color_red_bottom {*/
-
-
-/*	background-color: #fed7d7;*/
-
-
-/*    border: 0 solid #e2e8f0;*/
-
-
-/*    font-weight: 600;*/
-
-
-/*    padding-top: .25rem;*/
-
-
-/*    padding-bottom: .25rem;*/
-
-
-/*}*/
+.iconGreenSizeCss {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #38a169;
+}
 
 .panelBottomBorder > * {
     border-bottom: 0px solid #ccc0 !important;

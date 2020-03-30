@@ -19,88 +19,94 @@
 				</headerContent>
 				<content>
 					<Panel backgroundDesign="Solid">
-						<f:GridList class="sapUiSmallMarginTop">
-							<f:GridListItem class="redbackgroundCss">
-								<VBox>
-									<VBox class="sapUiSmallMargin">
-										<Title class="redcolorCountLabel fontCountLabelSizeCss" text="{i18n>confirmed}" wrapping="true"/>
-										<Label class="redcolorCountLabel fontCountSizeCss" text="{/selectedData/cases}" wrapping="true"/>
-									</VBox>
+						<l:Grid containerQuery="true" position="Center">
+							<VBox class="redbackgroundCss">
+								<VBox class="sapUiSmallMargin">
+									<html:div class="iconSizeCss sapUiSmallMarginRight">
+										<core:Icon src="sap-icon://wounds-doc"></core:Icon>
+									</html:div>
+									<Label class="redcolorCountLabel fontCountSizeCss" text="{/selectedData/cases}" wrapping="true"/>
+									<Title class="redcolorCountLabel fontCountLabelSizeCss" text="{i18n>confirmed}" wrapping="true"/>
 								</VBox>
-							</f:GridListItem>
-							<f:GridListItem class="greenbackgroundCss">
-								<VBox>
-									<VBox class="sapUiSmallMargin">
-										<Title class="greencolorCountLabel fontCountLabelSizeCss" text="{i18n>recovered}" wrapping="true"/>
-										<Label class="greencolorCountLabel fontCountSizeCss" text="{/selectedData/recovered}" wrapping="true"/>
-									</VBox>
+							</VBox>
+							<VBox class="greenbackgroundCss">
+								<VBox class="sapUiSmallMargin">
+									<html:div class="iconGreenSizeCss sapUiSmallMarginRight">
+										<core:Icon src="sap-icon://physical-activity"></core:Icon>
+									</html:div>
+									<Label class="greencolorCountLabel fontCountSizeCss" text="{/selectedData/recovered}" wrapping="true"/>
+									<Title class="greencolorCountLabel fontCountLabelSizeCss" text="{i18n>recovered}" wrapping="true"/>
 								</VBox>
-							</f:GridListItem>
-							<f:GridListItem class="graybackgroundCss">
-								<VBox>
-									<VBox class="sapUiSmallMargin">
-										<Title class="morronColor fontCountLabelSizeCss" text="{i18n>deaths}" wrapping="true"/>
-										<Label class="morronColor fontCountSizeCss" text="{/selectedData/deaths}" wrapping="true"/>
-									</VBox>
+							</VBox>
+							<VBox class="graybackgroundCss">
+								<VBox class="sapUiSmallMargin">
+									<html:div class="iconSizeCss sapUiSmallMarginRight">
+										<core:Icon src="sap-icon://bed"></core:Icon>
+									</html:div>
+									<Label class="morronColor fontCountSizeCss" text="{/selectedData/deaths}" wrapping="true"/>
+									<Title class="morronColor fontCountLabelSizeCss" text="{i18n>deaths}" wrapping="true"/>
 								</VBox>
-							</f:GridListItem>
-						</f:GridList>
+							</VBox>
+							<VBox class="redbackgroundCss">
+								<VBox class="sapUiSmallMargin">
+									<html:div class="iconSizeCss sapUiSmallMarginRight">
+										<core:Icon src="sap-icon://stethoscope"></core:Icon>
+									</html:div>
+									<Label class="redcolorCountLabel fontCountSizeCss" text="{/selectedData/todayCases}" wrapping="true"/>
+									<Title class="redcolorCountLabel fontCountLabelSizeCss" text="{i18n>todayCases}" wrapping="true"/>
+								</VBox>
+							</VBox>
+						</l:Grid >
 					</Panel>
 					<!--botttom-->
 					<Panel visible="{/bottomPanelVisible}" class="panelBottomBorder" backgroundDesign="Solid">
 						<l:DynamicSideContent id="DynamicSideContent" breakpointChanged="updateToggleButtonState">
 							<Panel class="panelBottomBorder">
 								<Title text="{/selectedCountry} : {i18n>overview}" level="H4" class="sapUiSmallMarginBottom fontCountLabelSizeCss"/>
-								<f:GridList >
-									<f:GridListItem class="bluebackgroundCss">
-										<VBox>
-											<VBox class="sapUiSmallMargin">
-												<Title class="redcolorCountLabel fontCountLabelSize500Css" text="{i18n>todayCases}" wrapping="true"/>
-												<Label class="redcolorCountLabel fontCountSizeCss" text="{/selectedData/todayCases}" wrapping="true"/>
-											</VBox>
+								<l:Grid containerQuery="true" position="Center">
+									<VBox class="bluebackgroundCss">
+										<VBox class="sapUiSmallMargin">
+											<!--<html:div class="iconSizeCss sapUiSmallMarginRight">-->
+											<!--	<core:Icon src="sap-icon://bed"></core:Icon>-->
+											<!--</html:div>-->
+											<Label class="morronColor fontCountSizeCss" text="{/selectedData/todayDeaths}" wrapping="true"/>
+											<Title class="morronColor fontCountLabelSize500Css" text="{i18n>todayDeaths}" wrapping="true"/>
 										</VBox>
-									</f:GridListItem>
-									<f:GridListItem class="bluebackgroundCss">
-										<VBox>
-											<VBox class="sapUiSmallMargin">
-												<Title class="morronColor fontCountLabelSize500Css" text="{i18n>todayDeaths}" wrapping="true"/>
-												<Label class="morronColor fontCountSizeCss" text="{/selectedData/todayDeaths}" wrapping="true"/>
-											</VBox>
+									</VBox>
+									<VBox class="bluebackgroundCss">
+										<VBox class="sapUiSmallMargin">
+											<!--<html:div class="iconSizeCss sapUiSmallMarginRight">-->
+											<!--	<core:Icon src="sap-icon://syringe"></core:Icon>-->
+											<!--</html:div>-->
+											<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/active}" wrapping="true"/>
+											<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>active}" wrapping="true"/>
 										</VBox>
-									</f:GridListItem>
-									<f:GridListItem class="bluebackgroundCss">
-										<VBox>
-											<VBox class="sapUiSmallMargin">
-												<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>active}" wrapping="true"/>
-												<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/active}" wrapping="true"/>
-											</VBox>
+									</VBox>
+									<VBox class="bluebackgroundCss">
+										<VBox class="sapUiSmallMargin">
+											<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/critical}" wrapping="true"/>
+											<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>critical}" wrapping="true"/>
 										</VBox>
-									</f:GridListItem>
-									<f:GridListItem class="bluebackgroundCss">
-										<VBox>
-											<VBox class="sapUiSmallMargin">
-												<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>critical}" wrapping="true"/>
-												<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/critical}" wrapping="true"/>
-											</VBox>
+									</VBox>
+									<VBox class="bluebackgroundCss">
+										<VBox class="sapUiSmallMargin">
+											<!--<html:div class="iconSizeCss sapUiSmallMarginRight">-->
+											<!--	<core:Icon src="sap-icon://electronic-medical-record"></core:Icon>-->
+											<!--</html:div>-->
+											<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/casesPerOneMillion}" wrapping="true"/>
+											<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>casesPerOneMillion}" wrapping="true"/>
 										</VBox>
-									</f:GridListItem>
-									<f:GridListItem class="bluebackgroundCss">
-										<VBox>
-											<VBox class="sapUiSmallMargin">
-												<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>casesPerOneMillion}" wrapping="true"/>
-												<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/casesPerOneMillion}" wrapping="true"/>
-											</VBox>
+									</VBox>
+									<VBox class="bluebackgroundCss">
+										<VBox class="sapUiSmallMargin">
+											<!--<html:div class="iconSizeCss sapUiSmallMarginRight">-->
+											<!--	<core:Icon src="sap-icon://electronic-medical-record"></core:Icon>-->
+											<!--</html:div>-->
+											<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/deathsPerOneMillion}" wrapping="true"/>
+											<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>deathsPerOneMillion}" wrapping="true"/>
 										</VBox>
-									</f:GridListItem>
-									<f:GridListItem class="bluebackgroundCss">
-										<VBox>
-											<VBox class="sapUiSmallMargin">
-												<Title class="blackcolorCountLabel fontCountLabelSize500Css" text="{i18n>deathsPerOneMillion}" wrapping="true"/>
-												<Label class="blackcolorCountLabel fontCountSizeCss" text="{/selectedData/deathsPerOneMillion}" wrapping="true"/>
-											</VBox>
-										</VBox>
-									</f:GridListItem>
-								</f:GridList>
+									</VBox>
+								</l:Grid>
 							</Panel>
 							<l:sideContent>
 								<!--<ScrollContainer horizontal="false" vertical="true" height="50%">-->
